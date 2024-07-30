@@ -30,6 +30,7 @@ export class linkedList {
     let res = "";
     if (this.head == null) {
       res = `Empty list`;
+      return res;
     }
     let currentNode = this.head;
     while (currentNode) {
