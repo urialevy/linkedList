@@ -29,7 +29,7 @@ export class linkedList {
   printList() {
     let res = "";
     if (this.head == null) {
-      return `Empty list`;
+      res = `Empty list`;
     }
     let currentNode = this.head;
     while (currentNode) {
