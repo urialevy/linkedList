@@ -1,1 +1,10 @@
-console.log("Hello world!");
+import { linkedList, node } from "./linkedList.js";
+const testList = new linkedList();
+testList.append(`1`);
+let newNode = new node(`2`, null);
+testList.head.nextNode = newNode;
+let thirdNode = new node(`3`, null);
+newNode.nextNode = thirdNode;
+let nodeFour = new node("4", null);
+thirdNode.nextNode = nodeFour;
+console.log(testList.printList());

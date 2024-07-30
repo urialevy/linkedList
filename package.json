@@ -1,8 +1,9 @@
 {
   "name": "linkedlist",
   "version": "1.0.0",
+  "type": "module",
   "description": "This is a linked list project for The Odin Project",
-  "main": "script.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
