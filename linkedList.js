@@ -134,5 +134,20 @@ export class linkedList {
     return false;
   }
 
-  find(value) {} //finds index of a value
+  find(value) {
+    if (this.head == null) {
+      const err = new Error(`no nodes in list`);
+      throw err;
+    }
+    let i = 0;
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.value == value) {
+        return i;
+      }
+      i = i + 1;
+      currentNode = currentNode.nextNode;
+    }
+    return `"${value}" not found in list`;
+  }
 }

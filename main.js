@@ -8,5 +8,8 @@ testList.append("5");
 testList.append("6");
 testList.prepend("0");
 testList.prepend("-1");
+testList.append("cat");
 const blankList = new linkedList();
 console.log(testList.toString());
+console.log(testList.find("cat"));
+console.log(testList.find("dog"));
