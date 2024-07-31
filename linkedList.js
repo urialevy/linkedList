@@ -104,6 +104,7 @@ export class linkedList {
     }
     if (this.head.nextNode == null) {
       this.head = null;
+      return;
     }
     let currentNode = this.head;
     let newTail = this.head;
@@ -111,9 +112,10 @@ export class linkedList {
       newTail = currentNode;
       currentNode = currentNode.nextNode;
     }
+    console.log(newTail, currentNode);
     currentNode = null;
     newTail.nextNode = null;
-    return null;
+    return;
   }
 
   contains(value) {

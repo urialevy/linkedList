@@ -9,7 +9,4 @@ testList.append("6");
 testList.prepend("0");
 testList.prepend("-1");
 const blankList = new linkedList();
-testList.pop();
-console.log(testList.toString());
-testList.pop();
 console.log(testList.toString());
