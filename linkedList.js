@@ -81,12 +81,6 @@ export class linkedList {
       const err = new Error(`invalid list length`);
       throw err;
     }
-    if (index > this.size()) {
-      const err = new Error(
-        `${index} is greater than the list size of ${this.size()}`
-      );
-      throw err;
-    }
     let currentNode = this.head;
     let count = 0;
     while (currentNode) {
@@ -96,36 +90,47 @@ export class linkedList {
       currentNode = currentNode.nextNode;
       count = count + 1;
     }
+    const err = new Error(
+      `${index} is greater than the list size of ${this.size()}`
+    );
+    throw err;
   }
 
   pop() {
-    if (this.size < 1) {
-      const err = new Error(`no elements in list`);
+    if (this.head == null) {
+      const err = new Error(`no nodes in list`);
+      console.log(err);
       throw err;
     }
-    if (this.size == 1) {
-      this.head.nextNode = null;
-      this.head.value = null;
+    if (this.head.nextNode == null) {
+      this.head = null;
     }
     let currentNode = this.head;
     let newTail = this.head;
-    while (currentNode) {
-      if (currentNode.nextNode == null) {
-        while (newTail) {
-          if (newTail.nextNode == currentNode) {
-            currentNode.nextNode = null;
-            currentNode.value = null;
+    while (currentNode.nextNode) {
+      newTail = currentNode;
+      currentNode = currentNode.nextNode;
+    }
+    currentNode = null;
+    newTail.nextNode = null;
+    return null;
+  }
 
-            newTail.nextNode = null;
-          }
-          newTail = newTail.nextNode;
-        }
+  contains(value) {
+    if (this.head == null) {
+      const err = new Error(`no nodes in list`);
+      throw err;
+    }
+
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.value == value) {
+        return true;
       }
       currentNode = currentNode.nextNode;
     }
+    return false;
   }
 
-  contains(value) {}
-
-  find(value) {}
+  find(value) {} //finds index of a value
 }
