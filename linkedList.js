@@ -98,7 +98,32 @@ export class linkedList {
     }
   }
 
-  pop() {}
+  pop() {
+    if (this.size < 1) {
+      const err = new Error(`no elements in list`);
+      throw err;
+    }
+    if (this.size == 1) {
+      this.head.nextNode = null;
+      this.head.value = null;
+    }
+    let currentNode = this.head;
+    let newTail = this.head;
+    while (currentNode) {
+      if (currentNode.nextNode == null) {
+        while (newTail) {
+          if (newTail.nextNode == currentNode) {
+            currentNode.nextNode = null;
+            currentNode.value = null;
+
+            newTail.nextNode = null;
+          }
+          newTail = newTail.nextNode;
+        }
+      }
+      currentNode = currentNode.nextNode;
+    }
+  }
 
   contains(value) {}
 
