@@ -58,7 +58,7 @@ export class linkedList {
       i = i + 1;
       currentNode = currentNode.nextNode;
     }
-    return `List size: ${i}`;
+    return i;
   }
 
   header() {
@@ -76,7 +76,27 @@ export class linkedList {
     return currentNode;
   }
 
-  at(index) {}
+  at(index) {
+    if (index < 0) {
+      const err = new Error(`invalid list length`);
+      throw err;
+    }
+    if (index > this.size()) {
+      const err = new Error(
+        `${index} is greater than the list size of ${this.size()}`
+      );
+      throw err;
+    }
+    let currentNode = this.head;
+    let count = 0;
+    while (currentNode) {
+      if (count == index) {
+        return currentNode;
+      }
+      currentNode = currentNode.nextNode;
+      count = count + 1;
+    }
+  }
 
   pop() {}
 
