@@ -14,3 +14,5 @@ testList.prepend("0");
 testList.prepend("-1");
 console.log(testList.toString());
 console.log(testList.size());
+console.log(testList.header());
+console.log(testList.tail());

@@ -60,10 +60,27 @@ export class linkedList {
     }
     return `List size: ${i}`;
   }
-  head() {}
-  tail() {}
+
+  header() {
+    return this.head;
+  }
+
+  tail() {
+    let currentNode = this.head;
+    while (currentNode) {
+      if (currentNode.nextNode == null) {
+        return currentNode;
+      }
+      currentNode = currentNode.nextNode;
+    }
+    return currentNode;
+  }
+
   at(index) {}
+
   pop() {}
+
   contains(value) {}
+
   find(value) {}
 }
