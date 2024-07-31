@@ -7,4 +7,6 @@ let thirdNode = new node(`3`, null);
 newNode.nextNode = thirdNode;
 let nodeFour = new node("4", null);
 thirdNode.nextNode = nodeFour;
-console.log(testList.printList());
+testList.append("5");
+testList.append("6");
+console.log(testList.toString());
