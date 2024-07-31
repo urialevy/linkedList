@@ -10,3 +10,7 @@ thirdNode.nextNode = nodeFour;
 testList.append("5");
 testList.append("6");
 console.log(testList.toString());
+testList.prepend("0");
+testList.prepend("-1");
+console.log(testList.toString());
+console.log(testList.size());

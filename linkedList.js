@@ -8,7 +8,6 @@ export class node {
 export class linkedList {
   constructor() {
     this.head = null;
-    this.length = 0;
   }
   append(value) {
     let newNode = new node(value, null);
@@ -25,14 +24,17 @@ export class linkedList {
         currentNode = currentNode.nextNode;
       }
     }
-    this.length = this.length + 1;
   }
   prepend(value) {
-    if (this.list.length < 1) {
+    if (this.head == null) {
       const err = new Error(
         `list cannot be appended with a length of less than 1`
       );
       throw err;
+    } else {
+      let newNode = new node(value, null);
+      newNode.nextNode = this.head;
+      this.head = newNode;
     }
   }
   toString() {
@@ -49,7 +51,15 @@ export class linkedList {
     res = res.concat(null);
     return res;
   }
-  size() {}
+  size() {
+    let currentNode = this.head;
+    let i = 0;
+    while (currentNode) {
+      i = i + 1;
+      currentNode = currentNode.nextNode;
+    }
+    return `List size: ${i}`;
+  }
   head() {}
   tail() {}
   at(index) {}
