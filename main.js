@@ -1,5 +1,5 @@
 import { LinkedList, Node } from "./linkedList.js";
-// example uses class syntax - adjust as necessary
+
 const list = new LinkedList();
 
 list.append("dog");
