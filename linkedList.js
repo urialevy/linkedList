@@ -19,7 +19,7 @@ export class linkedList {
       while (currentNode) {
         if (currentNode.nextNode === null) {
           currentNode.nextNode = newNode;
-          return newNode;
+          return;
         }
         currentNode = currentNode.nextNode;
       }
@@ -45,7 +45,7 @@ export class linkedList {
     }
     let currentNode = this.head;
     while (currentNode) {
-      res = res.concat(currentNode.value, " -> ");
+      res = res.concat(`( ${currentNode.value} )`, " -> ");
       currentNode = currentNode.nextNode;
     }
     res = res.concat(null);
@@ -150,4 +150,39 @@ export class linkedList {
     }
     return `"${value}" not found in list`;
   }
+  insertAt(value, index){
+    if (index < 0) {
+      const err = new Error(`Cannot insert at negative index`)
+      throw err
+    }
+    let newNode = new node(value, null);
+    let previousNode;
+    if (index == 0) {
+      newNode.nextNode = this.head
+      this.head = newNode
+      return
+    }
+    let count = 0;
+    let currentNode = this.head
+    while(currentNode) {
+      if (count == index) {
+        if (currentNode.nextNode === null) {
+          currentNode.nextNode = newNode;
+          return;
+        }
+        console.log(previousNode.value)
+        console.log(currentNode.value)
+        previousNode.nextNode = newNode;
+        newNode.nextNode = currentNode;
+        return
+        
+      }
+      previousNode = currentNode;
+      currentNode = currentNode.nextNode
+      count = count+1;
+    }
+    const err = new Error(`index ${index} exceeds list length`)
+    throw err
+  }
+  removeAt(index){}
 }
