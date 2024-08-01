@@ -1,16 +1,11 @@
-import { linkedList, node } from "./linkedList.js";
-const testList = new linkedList();
-testList.append(`1`);
-testList.append(`2`);
-testList.append(`3`);
-testList.append(`4`);
-testList.append("5");
-testList.append("6");
-testList.prepend("0");
-testList.prepend("-1");
-testList.append("cat");
-const blankList = new linkedList();
-console.log(testList.size())
-console.log(testList.toString())
-testList.insertAt('One', 3)
-console.log(testList.toString())
+import { LinkedList, Node } from "./linkedList.js";
+// example uses class syntax - adjust as necessary
+const list = new LinkedList();
+
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
+console.log(list.toString())
