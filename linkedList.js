@@ -27,10 +27,9 @@ export class LinkedList {
   }
   prepend(value) {
     if (this.head == null) {
-      const err = new Error(
+      throw new Error(
         `list cannot be appended with a length of less than 1`
       );
-      throw err;
     } else {
       let newNode = new Node(value, null);
       newNode.nextNode = this.head;
@@ -78,8 +77,7 @@ export class LinkedList {
 
   at(index) {
     if (index < 0) {
-      const err = new Error(`invalid list length`);
-      throw err;
+      throw new Error(`invalid list length`);
     }
     let currentNode = this.head;
     let count = 0;
@@ -90,17 +88,14 @@ export class LinkedList {
       currentNode = currentNode.nextNode;
       count = count + 1;
     }
-    const err = new Error(
+    throw new Error(
       `${index} is greater than the list size of ${this.size()}`
     );
-    throw err;
   }
 
   pop() {
     if (this.head == null) {
-      const err = new Error(`no nodes in list`);
-      console.log(err);
-      throw err;
+      throw new Error(`no nodes in list`);
     }
     if (this.head.nextNode == null) {
       this.head = null;
@@ -120,8 +115,7 @@ export class LinkedList {
 
   contains(value) {
     if (this.head == null) {
-      const err = new Error(`no nodes in list`);
-      throw err;
+      throw new Error(`no nodes in list`);
     }
 
     let currentNode = this.head;
@@ -136,8 +130,7 @@ export class LinkedList {
 
   find(value) {
     if (this.head == null) {
-      const err = new Error(`no nodes in list`);
-      throw err;
+      throw new Error(`no nodes in list`);
     }
     let i = 0;
     let currentNode = this.head;
@@ -179,8 +172,7 @@ export class LinkedList {
       currentNode = currentNode.nextNode
       count = count+1;
     }
-    const err = new Error(`index ${index} exceeds list length`)
-    throw err
+    throw new Error(`index ${index} exceeds list length`)
   }
   removeAt(index){
     if (this.head == null) {
@@ -188,8 +180,7 @@ export class LinkedList {
       throw err;
     }
     if (index < 0) {
-      const err = new Error(`Cannot insert at negative index`)
-      throw err
+      throw new Error(`Cannot insert at negative index`)
     }
     if (index == 0) {
       this.head = this.head.nextNode;
@@ -216,7 +207,47 @@ export class LinkedList {
       newNextNode = currentNode.nextNode
       count = count+1;
     }
-    const err = new Error(`index ${index} exceeds list length`)
-    throw err
+    throw new Error(`index ${index} exceeds list length`)
   }
+
+  middleNode(){
+    if (this.head == null) {
+      throw new Error (`No linked list`)
+    }
+    const mid = Math.floor(this.size()/2);
+    return this.at(mid)    
+  }
+
+  reverse(){
+    if (this.head == null) {
+      throw new Error (`No linked list`)
+    }
+    let currentNode = this.head;
+    const reversedList = new LinkedList();
+    reversedList.append(this.head.value)
+    if (reversedList.currentNode.nextNode == null) {
+      return reversedList
+    }
+    currentNode = currentNode.nextNode
+    
+    while (currentNode) {
+      reversedList.prepend(currentNode.value)
+      currentNode = currentNode.nextNode;
+    }
+    return reversedList;
+
+  }
+
+  /* TODO: 
+  create doubly linked list
+  reverse doubly linked list
+  return nth node from end of list
+  delete last occurence of item from a linked list
+  remove duplicate elements from a sorted linked liest
+  detect loop in linked list
+  delete n nodes after m nodes of a linked list
+  merge a linked list into another linked list at alternate positions
+
+
+  */
 }
