@@ -218,25 +218,49 @@ export class LinkedList {
     return this.at(mid)    
   }
 
-  reverse(){
-    if (this.head == null) {
-      throw new Error (`No linked list`)
-    }
-    let currentNode = this.head;
-    const reversedList = new LinkedList();
-    reversedList.append(this.head.value)
-    if (reversedList.currentNode.nextNode == null) {
-      return reversedList
-    }
-    currentNode = currentNode.nextNode
+  // reverse(){
+  //   if (this.head == null) {
+  //     throw new Error (`No linked list`)
+  //   }
+  //   let currentNode = this.head;
+  //   const reversedList = new LinkedList();
+  //   reversedList.append(this.head.value)
+  //   if (reversedList.currentNode.nextNode == null) {
+  //     return reversedList
+  //   }
+  //   currentNode = currentNode.nextNode
     
-    while (currentNode) {
-      reversedList.prepend(currentNode.value)
-      currentNode = currentNode.nextNode;
-    }
-    return reversedList;
+  //   while (currentNode) {
+  //     reversedList.prepend(currentNode.value)
+  //     currentNode = currentNode.nextNode;
+  //   }
+  //   return reversedList;
+
+  // }
+
+reverse(){
+  if (this.head == null ) {
+    return this;
+  }
+  let currentNode = this.head.nextNode;
+  let previousNode = this.head
+  let newNextNode = currentNode.nextNode;
+  let i = 0;
+  while (currentNode) {
+      console.log (`Iteration ${i+1}`)
+      console.log()
+      currentNode.nextNode = previousNode;
+      currentNode = newNextNode;
+      previousNode = currentNode;
+      if (newNextNode) {      newNextNode = newNextNode.nextNode}
+
 
   }
+
+  return this;
+
+
+}
 
   /* TODO: 
   create doubly linked list
