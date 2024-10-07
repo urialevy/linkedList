@@ -241,7 +241,7 @@ export class LinkedList {
     let previousNode;
     let newNextNode = currentNode.nextNode;
     while (currentNode) {
-      newNextNode = newNextNode.nextNode;
+      newNextNode = currentNode.nextNode;
       currentNode.nextNode = previousNode;
       previousNode = currentNode;
       currentNode = newNextNode;
