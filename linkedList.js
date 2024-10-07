@@ -27,9 +27,7 @@ export class LinkedList {
   }
   prepend(value) {
     if (this.head == null) {
-      throw new Error(
-        `list cannot be appended with a length of less than 1`
-      );
+      throw new Error(`list cannot be appended with a length of less than 1`);
     } else {
       let newNode = new Node(value, null);
       newNode.nextNode = this.head;
@@ -88,9 +86,7 @@ export class LinkedList {
       currentNode = currentNode.nextNode;
       count = count + 1;
     }
-    throw new Error(
-      `${index} is greater than the list size of ${this.size()}`
-    );
+    throw new Error(`${index} is greater than the list size of ${this.size()}`);
   }
 
   pop() {
@@ -143,21 +139,21 @@ export class LinkedList {
     }
     return `"${value}" not found in list`;
   }
-  insertAt(value, index){
+  insertAt(value, index) {
     if (index < 0) {
-      const err = new Error(`Cannot insert at negative index`)
-      throw err
+      const err = new Error(`Cannot insert at negative index`);
+      throw err;
     }
     let newNode = new Node(value, null);
     let previousNode;
     if (index == 0) {
-      newNode.nextNode = this.head
-      this.head = newNode
-      return
+      newNode.nextNode = this.head;
+      this.head = newNode;
+      return;
     }
     let count = 0;
-    let currentNode = this.head
-    while(currentNode) {
+    let currentNode = this.head;
+    while (currentNode) {
       if (count == index) {
         if (currentNode.nextNode === null) {
           currentNode.nextNode = newNode;
@@ -165,57 +161,56 @@ export class LinkedList {
         }
         previousNode.nextNode = newNode;
         newNode.nextNode = currentNode;
-        return
-        
+        return;
       }
       previousNode = currentNode;
-      currentNode = currentNode.nextNode
-      count = count+1;
+      currentNode = currentNode.nextNode;
+      count = count + 1;
     }
-    throw new Error(`index ${index} exceeds list length`)
+    throw new Error(`index ${index} exceeds list length`);
   }
-  removeAt(index){
+  removeAt(index) {
     if (this.head == null) {
-      const err = new Error(`Cannot remove from empty list`)
+      const err = new Error(`Cannot remove from empty list`);
       throw err;
     }
     if (index < 0) {
-      throw new Error(`Cannot insert at negative index`)
+      throw new Error(`Cannot insert at negative index`);
     }
     if (index == 0) {
       this.head = this.head.nextNode;
-      return
+      return;
     }
-    let currentNode = this.head
+    let currentNode = this.head;
     let previousNode;
     let newNextNode;
-    let count = 0
+    let count = 0;
     while (currentNode) {
       if (count == index) {
         if (currentNode.nextNode == null) {
-          console.log(`final node`)
+          console.log(`final node`);
           previousNode.nextNode = null;
           currentNode = null;
-          return
+          return;
         }
         previousNode.nextNode = newNextNode;
         currentNode = null;
-        return
+        return;
       }
       previousNode = currentNode;
-      currentNode = currentNode.nextNode
-      newNextNode = currentNode.nextNode
-      count = count+1;
+      currentNode = currentNode.nextNode;
+      newNextNode = currentNode.nextNode;
+      count = count + 1;
     }
-    throw new Error(`index ${index} exceeds list length`)
+    throw new Error(`index ${index} exceeds list length`);
   }
 
-  middleNode(){
+  middleNode() {
     if (this.head == null) {
-      throw new Error (`No linked list`)
+      throw new Error(`No linked list`);
     }
-    const mid = Math.floor(this.size()/2);
-    return this.at(mid)    
+    const mid = Math.floor(this.size() / 2);
+    return this.at(mid);
   }
 
   // reverse(){
@@ -229,7 +224,7 @@ export class LinkedList {
   //     return reversedList
   //   }
   //   currentNode = currentNode.nextNode
-    
+
   //   while (currentNode) {
   //     reversedList.prepend(currentNode.value)
   //     currentNode = currentNode.nextNode;
@@ -238,29 +233,24 @@ export class LinkedList {
 
   // }
 
-reverse(){
-  if (this.head == null ) {
+  reverse() {
+    if (this.head == null || this.head.nextNode == null) {
+      return this;
+    }
+    let currentNode = this.head;
+    let previousNode;
+    let newNextNode = currentNode.nextNode;
+    while (currentNode) {
+      newNextNode = newNextNode.nextNode;
+      currentNode.nextNode = previousNode;
+      previousNode = currentNode;
+      currentNode = newNextNode;
+    }
+    this.head.nextNode = null;
+    this.head = previousNode;
+
     return this;
   }
-  let currentNode = this.head.nextNode;
-  let previousNode = this.head
-  let newNextNode = currentNode.nextNode;
-  let i = 0;
-  while (currentNode) {
-      console.log (`Iteration ${i+1}`)
-      console.log()
-      currentNode.nextNode = previousNode;
-      currentNode = newNextNode;
-      previousNode = currentNode;
-      if (newNextNode) {      newNextNode = newNextNode.nextNode}
-
-
-  }
-
-  return this;
-
-
-}
 
   /* TODO: 
   create doubly linked list

@@ -8,6 +8,6 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
-console.log(list.toString())
-list.reverse()
-console.log(list.toString())
+console.log(list.toString());
+list.reverse();
+console.log(list.toString());
