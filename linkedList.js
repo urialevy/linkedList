@@ -103,7 +103,7 @@ export class LinkedList {
       newTail = currentNode;
       currentNode = currentNode.nextNode;
     }
-    console.log(newTail, currentNode);
+
     currentNode = null;
     newTail.nextNode = null;
     return;
@@ -188,7 +188,6 @@ export class LinkedList {
     while (currentNode) {
       if (count == index) {
         if (currentNode.nextNode == null) {
-          console.log(`final node`);
           previousNode.nextNode = null;
           currentNode = null;
           return;
@@ -252,6 +251,33 @@ export class LinkedList {
     return this;
   }
 
+  nodeFromEnd(n) {
+    if (this.head == null) {
+      throw new Error(`Empty list`);
+    }
+    if (n < 0) {
+      throw new Error(`Cannot use negative index`);
+    }
+    let len = this.size();
+    if (n == len) {
+      return this.head;
+    }
+    if (n > len) {
+      throw new Error(`n is larger than list length of ${len}`);
+    }
+    let currentNode = this.head;
+    let targetIndex = len - n;
+    let i = 1;
+    console.log(`target index: ${targetIndex}`);
+
+    while (currentNode) {
+      if (i == targetIndex) {
+        return currentNode;
+      }
+      currentNode = currentNode.nextNode;
+      i++;
+    }
+  }
   /* TODO: 
   create doubly linked list
   reverse doubly linked list

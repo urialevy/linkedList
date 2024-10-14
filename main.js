@@ -11,3 +11,5 @@ list.append("turtle");
 console.log(list.toString());
 list.reverse();
 console.log(list.toString());
+console.log(list.nodeFromEnd(0));
+console.log(list.tail());
