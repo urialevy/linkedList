@@ -268,7 +268,6 @@ export class LinkedList {
     let currentNode = this.head;
     let targetIndex = len - n;
     let i = 1;
-    console.log(`target index: ${targetIndex}`);
 
     while (currentNode) {
       if (i == targetIndex) {
@@ -278,11 +277,32 @@ export class LinkedList {
       i++;
     }
   }
+
+  removeLastOccurence(string) {
+    if (this.head == null) {
+      throw new Error(`Empty list`);
+    }
+    let currentNode = this.head;
+    let i = 0;
+    let currentIndex;
+    while (currentNode) {
+      if (currentNode.value == string) {
+        currentIndex = i;
+      }
+      i++;
+      currentNode = currentNode.nextNode;
+    }
+    if (currentIndex) {
+      this.removeAt(currentIndex);
+      return this.toString();
+    }
+    return `"${string}" not found in list`;
+  }
+
   /* TODO: 
   create doubly linked list
   reverse doubly linked list
-  return nth node from end of list
-  delete last occurence of item from a linked list
+
   remove duplicate elements from a sorted linked liest
   detect loop in linked list
   delete n nodes after m nodes of a linked list

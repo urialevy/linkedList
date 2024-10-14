@@ -12,4 +12,9 @@ console.log(list.toString());
 list.reverse();
 console.log(list.toString());
 console.log(list.nodeFromEnd(0));
-console.log(list.tail());
+
+list.insertAt("dog", 3);
+list.insertAt("dog", 1);
+console.log(list.toString());
+console.log(list.removeLastOccurence("dog"));
+console.log(list.removeLastOccurence("amazing thing"));
